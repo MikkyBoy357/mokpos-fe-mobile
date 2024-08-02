@@ -17,7 +17,7 @@ class TopupBottomBar extends StatelessWidget {
       onTap: onTap,
       backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           label: "Home",
           icon: Icon(Icons.home),

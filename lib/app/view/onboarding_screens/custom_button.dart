@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: 60,
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.circular(16),
@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
                   if (prefixWidget != null) {
                     return prefixWidget!;
                   } else {
-                    return Icon(
+                    return const Icon(
                       Icons.account_balance,
                       color: Colors.transparent,
                     );
@@ -41,13 +41,13 @@ class CustomButton extends StatelessWidget {
               ),
               Text(
                 label,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.account_balance,
                 color: Colors.transparent,
                 size: 30,
@@ -84,7 +84,7 @@ class CustomOutlineButton extends StatelessWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               color: Colors.black,
               fontWeight: FontWeight.w600,
@@ -119,7 +119,7 @@ class CustomSmallButton extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             // height: 50,
             decoration: BoxDecoration(
               color: isSelected ? Colors.black : Colors.grey[100],
@@ -130,14 +130,14 @@ class CustomSmallButton extends StatelessWidget {
                 children: [
                   Icon(
                     icon,
-                    color: isSelected ? Colors.white : Color(0xFF2A3256),
+                    color: isSelected ? Colors.white : const Color(0xFF2A3256),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
                     label,
                     style: TextStyle(
                       fontSize: 14,
-                      color: isSelected ? Colors.white : Color(0xFF2A3256),
+                      color: isSelected ? Colors.white : const Color(0xFF2A3256),
                       fontWeight: FontWeight.w600,
                     ).copyWith(fontSize: fontSize),
                   ),

@@ -44,7 +44,7 @@ class SuccessDialog extends StatelessWidget {
       content: Text(text),
       actions: [
         ElevatedButton(
-          child: Text("OK"),
+          child: const Text("OK"),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -72,14 +72,14 @@ class ConfirmDialog extends StatelessWidget {
       content: Text(text),
       actions: [
         ElevatedButton(
-          child: Text("NO"),
+          child: const Text("NO"),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         ElevatedButton(
-          child: Text("YES"),
           onPressed: onYes,
+          child: const Text("YES"),
         ),
       ],
     );

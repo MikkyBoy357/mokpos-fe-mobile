@@ -2,18 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mokpos/app/view_model/customer/customer_view_model.dart';
 import 'package:mokpos/base/constant.dart';
-import 'package:mokpos/nfc_model/record.dart';
 import 'package:nfc_manager/nfc_manager.dart';
-import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../nfc_model/write_record.dart';
 import '../../../repository/repository.dart';
 import '../../../widgets/back_button_black.dart';
-import '../nfc_common/nfc_session.dart';
-import '../nfc_scan_screen.dart';
 
 class NdefWriteModel with ChangeNotifier {
   NdefWriteModel(this._repo);
@@ -63,19 +57,14 @@ class NdefWriteModel with ChangeNotifier {
 class RegisterClientNfcScreen extends StatelessWidget {
   const RegisterClientNfcScreen({super.key});
 
-  static Widget withDependency() => ChangeNotifierProvider<NdefWriteModel>(
-        create: (context) =>
-            NdefWriteModel(Provider.of(context, listen: false)),
-        child: RegisterClientNfcScreen(),
-      );
+
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CustomerViewModel>(
-      builder: (context, customerViewModel, _) {
+
         return Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Register client NFC Card",
               style: TextStyle(color: Colors.amber),
             ),
@@ -85,12 +74,12 @@ class RegisterClientNfcScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                     decoration: BoxDecoration(
-                      color: Color(0xFFFFCE1F).withOpacity(0.1),
+                      color: const Color(0xFFFFCE1F).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Column(
@@ -100,17 +89,17 @@ class RegisterClientNfcScreen extends StatelessWidget {
                             CircleAvatar(
                               radius: 20,
                               backgroundColor:
-                                  Color(0xFFFFCE1F).withOpacity(0.4),
+                                  const Color(0xFFFFCE1F).withOpacity(0.4),
                             ),
-                            SizedBox(width: 10),
-                            Text(
+                            const SizedBox(width: 10),
+                            const Text(
                               "NFC",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
-                        Text(
+                        const SizedBox(height: 10),
+                        const Text(
                           "This feature will allow you communicate with an NFC device and show the details of an item. To test it out you need a NFC",
                           style: TextStyle(
                             color: Color(0xFFD8A900),
@@ -119,25 +108,11 @@ class RegisterClientNfcScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Center(
                     child: GestureDetector(
                       onTap: () async {
-                        await customerViewModel.startRegisterCustomer();
 
-                        startSession(
-                          context: context,
-                          handleTag: (tag) => Provider.of<NdefWriteModel>(
-                                  context,
-                                  listen: false)
-                              .handleTag(
-                            tag,
-                            customerViewModel.myRecordsIterable,
-                            context,
-                            beforeFunction: customerViewModel.handleWriteTag,
-                            afterFunction: customerViewModel.addNewCustomer,
-                          ),
-                        );
                       },
                       child: CircleAvatar(
                         radius: 100,
@@ -145,7 +120,7 @@ class RegisterClientNfcScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 80,
                           backgroundColor: Colors.black.withOpacity(0.47),
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             backgroundColor: Colors.black,
                             foregroundColor: Colors.white,
                             radius: 60,
@@ -170,8 +145,8 @@ class RegisterClientNfcScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
-                  Text(
+                  const SizedBox(height: 30),
+                  const Text(
                     "Register for:",
                     style: TextStyle(
                       // color: Colors.white,
@@ -179,24 +154,24 @@ class RegisterClientNfcScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    customerViewModel.name,
+                  const Text(
+                    "Med",
                     style: TextStyle(
                       // color: Colors.white,
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    customerViewModel.email,
+                  const Text(
+                    "email",
                     style: TextStyle(
                       // color: Colors.white,
                       fontSize: 22,
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-                  SizedBox(height: 30),
-                  Text(
+                  const SizedBox(height: 30),
+                  const Text(
                     "Press and get an NFC closer to your device",
                     style: TextStyle(
                       // color: Colors.white,
@@ -205,7 +180,7 @@ class RegisterClientNfcScreen extends StatelessWidget {
                     ),
                   ),
                   // Spacer(),
-                  SizedBox(height: 20)
+                  const SizedBox(height: 20)
                 ],
               ),
             ),
@@ -219,12 +194,11 @@ class RegisterClientNfcScreen extends StatelessWidget {
                 // Constant.navigatePush(context, NfcScanScreen());
                 Constant.backToPrev(context);
               },
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               label: "BACK",
             ),
           ),
         );
-      },
-    );
+
   }
 }

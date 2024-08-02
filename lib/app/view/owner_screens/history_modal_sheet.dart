@@ -8,8 +8,8 @@ class HistoryModalSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      decoration: const BoxDecoration(
         // color: Colors.amber,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
@@ -21,7 +21,7 @@ class HistoryModalSheet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Reset",
                 style: TextStyle(
                   fontSize: 22,
@@ -32,15 +32,15 @@ class HistoryModalSheet extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop(context);
                 },
-                child: Icon(CupertinoIcons.xmark),
+                child: const Icon(CupertinoIcons.xmark),
               )
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Last 90 days",
                 style: TextStyle(
                   fontSize: 18,
@@ -51,7 +51,7 @@ class HistoryModalSheet extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop(context);
                 },
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 15,
                   backgroundColor: Colors.green,
                   child: CircleAvatar(
@@ -66,11 +66,11 @@ class HistoryModalSheet extends StatelessWidget {
               ),
             ],
           ),
-          Divider(),
+          const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Choose date",
                 style: TextStyle(
                   fontSize: 18,
@@ -81,7 +81,7 @@ class HistoryModalSheet extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop(context);
                 },
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 15,
                   backgroundColor: Colors.green,
                   child: CircleAvatar(
@@ -102,7 +102,7 @@ class HistoryModalSheet extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Starting from",
                     style: TextStyle(
                       fontSize: 13,
@@ -111,11 +111,11 @@ class HistoryModalSheet extends StatelessWidget {
                   Container(
                     height: 50,
                     // width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
                     decoration: BoxDecoration(
-                      color: Color(0xFF000000).withOpacity(0.05),
+                      color: const Color(0xFF000000).withOpacity(0.05),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -136,7 +136,7 @@ class HistoryModalSheet extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "To",
                     style: TextStyle(
                       fontSize: 13,
@@ -145,11 +145,11 @@ class HistoryModalSheet extends StatelessWidget {
                   Container(
                     height: 50,
                     // width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
                     decoration: BoxDecoration(
-                      color: Color(0xFF000000).withOpacity(0.05),
+                      color: const Color(0xFF000000).withOpacity(0.05),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -169,14 +169,14 @@ class HistoryModalSheet extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(vertical: 16),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            decoration: const BoxDecoration(
               color: Colors.green,
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 "Filter",
                 style: TextStyle(

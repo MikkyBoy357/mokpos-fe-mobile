@@ -1,10 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view/nfc_scan_screen.dart';
-import 'package:mokpos/app/view_model/shop/shop_view_model.dart';
-import 'package:mokpos/base/constant.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
-import 'package:provider/provider.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
   const PaymentMethodScreen({super.key});
@@ -13,26 +8,25 @@ class PaymentMethodScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Methode de paiement"),
+        title: const Text("Methode de paiement"),
       ),
-      body: Consumer<ShopViewModel>(
-        builder: (context, shopViewModel, _) {
-          return Column(
+      body:
+           Column(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 decoration: BoxDecoration(
                     border: Border.all(
                   color: Colors.grey[300]!,
                 )),
-                child: Column(
+                child: const Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Total facture:"),
                         Text(
-                          "CFA ${shopViewModel.totalPrice}",
+                          "CFA 200",
                           style: TextStyle(
                             color: Colors.green,
                             fontSize: 20,
@@ -44,14 +38,14 @@ class PaymentMethodScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
                     Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                          const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                       width: double.infinity,
                       decoration: BoxDecoration(
                           color: Colors.grey[100],
@@ -59,13 +53,13 @@ class PaymentMethodScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("E-Wallet"),
-                          SizedBox(height: 20),
+                          const Text("E-Wallet"),
+                          const SizedBox(height: 20),
                           Container(
                             height: 70,
                             width: 130,
-                            color: Color(0xFFA7F673),
-                            child: Center(
+                            color: const Color(0xFFA7F673),
+                            child: const Center(
                               child: Text(
                                 "Cashless",
                                 style: TextStyle(fontSize: 16),
@@ -79,15 +73,15 @@ class PaymentMethodScreen extends StatelessWidget {
                 ),
               ),
             ],
-          );
-        },
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0),
+          ),
+
+
+      bottomNavigationBar: const Padding(
+        padding: EdgeInsets.symmetric(vertical: 20.0),
         child: MyTextButton(
-          onTap: () {
-            Constant.navigatePush(context, NfcScanScreen.withDependency());
-          },
+          // onTap: () {
+          //   Constant.navigatePush(context, NfcScanScreen.withDependency());
+          // },
           margin: EdgeInsets.symmetric(horizontal: 16),
           label: "PAYER",
         ),

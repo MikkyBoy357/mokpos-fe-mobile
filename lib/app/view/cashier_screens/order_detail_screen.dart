@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view_model/shop/shop_view_model.dart';
+import 'package:mokpos/app/model/order_item_model.dart';
 import 'package:mokpos/base/constant.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
-import 'package:provider/provider.dart';
 
 import 'payment_method_screen.dart';
 
@@ -12,94 +10,99 @@ class OrderDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ShopViewModel>(
-      builder: (context, shopViewModel, _) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Details commande"),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: shopViewModel.cartItems.length,
-                  itemBuilder: (context, index) {
-                    var orderItem = shopViewModel.cartItems[index];
-                    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Details commande"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 3,
+              itemBuilder: (context, index) {
+                List<OrderItemModel> orderItems = [
+                  OrderItemModel(
+                    count: 2,
+                    id: "JD",
+                    name: "mED",
+                    price: 200,
+                    imageUrl: "imageUrl",
+                  ),
+                ];
+                var orderItem = orderItems[index];
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                BlackIconButton(
-                                  child: Center(
-                                    child: Text(
-                                      "${orderItem.count}",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                            BlackIconButton(
+                              child: Center(
+                                child: Text(
+                                  "${orderItem.count}",
+                                  style: const TextStyle(
+                                    color: Colors.white,
                                   ),
                                 ),
-                                SizedBox(width: 20),
-                                Text("${orderItem.name}"),
-                              ],
+                              ),
                             ),
-                            Text("CFA ${orderItem.price! * orderItem.count!}")
+                            const SizedBox(width: 20),
+                            Text("${orderItem.name}"),
                           ],
                         ),
-                        SizedBox(height: 10),
-                        Divider(thickness: 0.3),
+                        Text("CFA ${orderItem.price! * orderItem.count!}")
                       ],
-                    );
-                  },
-                ),
-              ],
+                    ),
+                    const SizedBox(height: 10),
+                    const Divider(thickness: 0.3),
+                  ],
+                );
+              },
             ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 130,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.grey[400]!,
           ),
-          bottomNavigationBar: Container(
-            height: 130,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey[400]!,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Total:"),
-                      Text("CFA ${shopViewModel.totalPrice}"),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  MyTextButton(
-                    // margin: EdgeInsets.symmetric(horizontal: 16),
-                    backgroundColor: Colors.green,
-                    label: "PAYER",
-                    onTap: () {
-                      Constant.navigatePush(context, PaymentMethodScreen());
-                    },
-                  ),
+                  Text("Total:"),
+                  Text("CFA 2000"),
                 ],
               ),
-            ),
+              const SizedBox(height: 10),
+              MyTextButton(
+                // margin: EdgeInsets.symmetric(horizontal: 16),
+                backgroundColor: Colors.green,
+                label: "PAYER",
+                onTap: () {
+                  Constant.navigatePush(context, const PaymentMethodScreen());
+                },
+              ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

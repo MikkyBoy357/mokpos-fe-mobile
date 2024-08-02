@@ -5,9 +5,6 @@ import 'package:path_provider/path_provider.dart';
 
 import '../app/model/token_model.dart';
 
-// import '../enums/delivery_status.dart';
-// import '../model/food_model.dart';
-
 class AppDataBaseService {
   bool _isInitialized = false;
   static const String dbName = 'tokenBox';

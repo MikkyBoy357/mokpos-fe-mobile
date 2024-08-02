@@ -13,6 +13,7 @@ class Validations {
     final RegExp nameExp = RegExp(
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
     if (!nameExp.hasMatch(value) && isRequried) return 'Invalid email address';
+    return null;
   }
 
   static String? validateUrl(String? value, [bool isRequried = true]) {
@@ -22,11 +23,12 @@ class Validations {
         // r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?',
         );
     if (!nameExp.hasMatch(value) && isRequried) return 'Invalid URL';
+    return null;
   }
 
   static String? validateNumber(String? value) {
     if (value!.isEmpty) return 'Field is required.';
-    final RegExp nameExp = RegExp('([0-9]+(\.[0-9]+)?)');
+    final RegExp nameExp = RegExp('([0-9]+(.[0-9]+)?)');
     if (!nameExp.hasMatch(value)) return 'Invalid Number';
     return null;
   }

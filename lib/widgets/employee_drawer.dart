@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mokpos/app/model/drawer_item_model.dart';
-import 'package:mokpos/app/view_model/employee/employee_view_model.dart';
-import 'package:provider/provider.dart';
 
 import '../base/constant.dart';
 import 'back_button_black.dart';
@@ -15,8 +12,7 @@ class EmployeeDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     // User currentUser = FirebaseAuth.instance.currentUser!;
 
-    return Consumer<EmployeeViewModel>(
-      builder: (context, employeeViewModel, _) {
+
         return Drawer(
           backgroundColor: Colors.black,
           child: SafeArea(
@@ -40,8 +36,8 @@ class EmployeeDrawer extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(width: 10),
-                          Text(
+                          const SizedBox(width: 10),
+                          const Text(
                             "MokPOS.",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -50,8 +46,8 @@ class EmployeeDrawer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         "MyStoreName",
                         style: TextStyle(
                           fontSize: 22,
@@ -59,15 +55,15 @@ class EmployeeDrawer extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Text(
-                        "${employeeViewModel.loggedInEmployee?.email}",
+                      const Text(
+                        "adeola@mail.com",
                         style: TextStyle(
                           fontSize: 22,
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       // Container(
                       //   height: 50,
                       //   width: MediaQuery.of(context).size.width,
@@ -91,15 +87,15 @@ class EmployeeDrawer extends StatelessWidget {
                       //     ],
                       //   ),
                       // ),
-                      SizedBox(height: 10),
-                      Divider(thickness: 0.1),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
+                      const Divider(thickness: 0.1),
+                      const SizedBox(height: 10),
                       ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: drawerItems.length,
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 30),
+                            const SizedBox(height: 30),
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             onTap: () {
@@ -115,10 +111,10 @@ class EmployeeDrawer extends StatelessWidget {
                                   height: 24,
                                   width: 24,
                                 ),
-                                SizedBox(width: 25),
+                                const SizedBox(width: 25),
                                 Text(
                                   drawerItems[index].label,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -140,8 +136,8 @@ class EmployeeDrawer extends StatelessWidget {
                           color: Colors.green[100]!.withOpacity(0.1),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Column(
+                      const SizedBox(width: 10),
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -169,7 +165,6 @@ class EmployeeDrawer extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
+
   }
 }

@@ -57,7 +57,7 @@ class MyBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlackIconButton(
       onTap: onTap,
-      child: Icon(
+      child: const Icon(
         CupertinoIcons.chevron_back,
         color: Colors.white,
       ),
@@ -87,7 +87,7 @@ class MyTextButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: margin,
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(8),

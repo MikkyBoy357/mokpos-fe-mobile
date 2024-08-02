@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mokpos/app/view/product_model.dart';
 
 import '../../../../widgets/back_button_black.dart';
-import '../../../model/shop_item_model.dart';
 
 class ShopListCard extends StatelessWidget {
   final bool showAdd;
@@ -25,7 +24,7 @@ class ShopListCard extends StatelessWidget {
       child: Container(
         height: 85,
         width: 40,
-        padding: EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(right: 16),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -45,32 +44,32 @@ class ShopListCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   shopItem.name!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   "CFA ${shopItem.price}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Visibility(
               visible: showAdd,
               child: BlackIconButton(
                 onTap: onAdd,
-                child: Icon(
+                child: const Icon(
                   Icons.add,
                   color: Colors.white,
                 ),

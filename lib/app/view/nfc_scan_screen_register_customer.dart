@@ -1,33 +1,19 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view_model/shop/shop_view_model.dart';
-import 'package:nfc_manager/nfc_manager.dart';
-import 'package:nfc_manager/platform_tags.dart';
-import 'package:provider/provider.dart';
 
 import '../../base/constant.dart';
 import '../../widgets/back_button_black.dart';
-import '../view_model/customer/customer_view_model.dart';
-import 'nfc_common/nfc_session.dart';
-import 'nfc_scan_screen.dart';
 
 class NfcScanScreenRegisterCustomer extends StatelessWidget {
   const NfcScanScreenRegisterCustomer({super.key});
 
-  static Widget withDependency() => ChangeNotifierProvider<TagReadModel>(
-        create: (context) => TagReadModel(),
-        child: NfcScanScreenRegisterCustomer(),
-      );
-
   @override
   Widget build(BuildContext context) {
-    return Consumer2<ShopViewModel, CustomerViewModel>(
-      builder: (context, shopViewModel, customerViewModel, _) {
+
         return Scaffold(
           // backgroundColor: Colors.green,
           appBar: AppBar(
-            title: Text("Topup"),
+            title: const Text("Topup"),
           ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -38,41 +24,39 @@ class NfcScanScreenRegisterCustomer extends StatelessWidget {
                 Container(
                   // height: 250,
                   child: Builder(builder: (context) {
-                    if (customerViewModel.customerData == null) {
-                      return SizedBox();
-                    } else {
+
                       return Column(
                         children: [
                           Row(
                             children: [
-                              SizedBox(width: 10),
-                              Text("ID:"),
+                              const SizedBox(width: 10),
+                              const Text("ID:"),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width - 120,
-                                child: Text(
-                                  "${customerViewModel.customerData!.id}",
+                                child: const Text(
+                                  "73",
                                   softWrap: true,
                                 ),
                               ),
                               // Text("${customerViewModel.customerData!.id}"),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Name:"),
-                              SizedBox(width: 10),
+                              const Text("Name:"),
+                              const SizedBox(width: 10),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width - 110,
-                                child: Text(
-                                  "${customerViewModel.customerData!.name}",
+                                child: const Text(
+                                  "Ojelade Mikky",
                                   softWrap: true,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           // Row(
                           //   children: [
                           //     Text("email:"),
@@ -85,30 +69,19 @@ class NfcScanScreenRegisterCustomer extends StatelessWidget {
                           // ),
                         ],
                       );
-                    }
+
                   }),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Center(
                   child: InkWell(
-                    onTap: () => startSession(
-                      context: context,
-                      handleTag: (tag) =>
-                          Provider.of<TagReadModel>(context, listen: false)
-                              .handleTag(
-                        "register",
-                        tag,
-                        context,
-                        customerViewModel.checkTagForId,
-                      ),
-                    ),
                     child: CircleAvatar(
                       radius: 100,
                       backgroundColor: Colors.black.withOpacity(0.05),
                       child: CircleAvatar(
                         radius: 80,
                         backgroundColor: Colors.black.withOpacity(0.47),
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           backgroundColor: Colors.black,
                           foregroundColor: Colors.white,
                           radius: 60,
@@ -133,8 +106,8 @@ class NfcScanScreenRegisterCustomer extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
-                Text(
+                const SizedBox(height: 30),
+                const Text(
                   "Recharger",
                   style: TextStyle(
                     // color: Colors.white,
@@ -142,16 +115,16 @@ class NfcScanScreenRegisterCustomer extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  "CFA ${customerViewModel.topupAmt}",
+                const Text(
+                  "CFA 100",
                   style: TextStyle(
                     // color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 30),
-                Text(
+                const SizedBox(height: 30),
+                const Text(
                   "Press and get an NFC closer to your device",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -177,28 +150,16 @@ class NfcScanScreenRegisterCustomer extends StatelessWidget {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: Builder(builder: (context) {
-            if (customerViewModel.customerData == null) {
               return MyTextButton(
                 onTap: () {
                   Constant.backToPrev(context);
                 },
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 label: "BACK",
               );
-            } else {
-              return MyTextButton(
-                onTap: () {
-                  customerViewModel.topupCustomerAccount(context);
-                  // Constant.navigatePush(context, NfcScanScreenRegisterCustomer());
-                },
-                backgroundColor: Colors.green,
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                label: "Confirm Recharge",
-              );
-            }
+
           }),
         );
-      },
-    );
+
   }
 }

@@ -26,12 +26,12 @@ List<DrawerItemModel> drawerItems = [
   DrawerItemModel(
     label: "History Transaction",
     svgPath: "${Constant.assetSvgPath}coins.svg",
-    nextPage: HistoryTransactionsScreen(),
+    nextPage: const HistoryTransactionsScreen(),
   ),
   DrawerItemModel(
     label: "Budgets",
     svgPath: "${Constant.assetSvgPath}coins.svg",
-    nextPage: BudgetListScreen(),
+    nextPage: const BudgetListScreen(),
   ),
   // DrawerItemModel(
   //   label: "Report",
@@ -46,7 +46,7 @@ List<DrawerItemModel> drawerItems = [
   DrawerItemModel(
     label: "Account",
     svgPath: "${Constant.assetSvgPath}user_outlined.svg",
-    nextPage: AccountScreen(),
+    nextPage: const AccountScreen(),
   ),
   // DrawerItemModel(
   //   label: "Support",

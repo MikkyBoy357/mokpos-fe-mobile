@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mokpos/app/view/owner_screens/history_modal_sheet.dart';
 
@@ -10,7 +9,7 @@ class HistoryTransactionsScreen extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "History Transaction",
           style: TextStyle(
             color: Colors.green,
@@ -20,11 +19,11 @@ class HistoryTransactionsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Divider(thickness: 0.5),
+          const Divider(thickness: 0.5),
           InkWell(
             onTap: () {
               showModalBottomSheet(
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -39,7 +38,7 @@ class HistoryTransactionsScreen extends StatelessWidget {
                     minChildSize: 0.65,
                     builder: (BuildContext context,
                         ScrollController scrollController) {
-                      return HistoryModalSheet();
+                      return const HistoryModalSheet();
                     },
                   );
                 },
@@ -48,8 +47,8 @@ class HistoryTransactionsScreen extends StatelessWidget {
             child: Container(
               height: 45,
               color: Colors.white,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
@@ -69,15 +68,15 @@ class HistoryTransactionsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Divider(thickness: 0.5),
+          const Divider(thickness: 0.5),
           Container(
             color: Colors.grey[100],
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  Row(
+                  const SizedBox(height: 20),
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("Sunday, 02 August 2020"),
@@ -89,16 +88,16 @@ class HistoryTransactionsScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 6,
-                    separatorBuilder: (context, index) => SizedBox(height: 10),
+                    separatorBuilder: (context, index) => const SizedBox(height: 10),
                     itemBuilder: (context, index) {
                       return Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                            const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
@@ -106,7 +105,7 @@ class HistoryTransactionsScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
+                            const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -125,13 +124,13 @@ class HistoryTransactionsScreen extends StatelessWidget {
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 8),
                               decoration: BoxDecoration(
                                 color: Colors.green,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
+                              child: const Text(
                                 "PAID OFF",
                                 style: TextStyle(
                                   color: Colors.white,

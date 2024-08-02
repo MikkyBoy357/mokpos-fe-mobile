@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mokpos/app/view/cashier_screens/cashier_main_screen.dart';
 import 'package:mokpos/app/view/main_screen.dart';
 import 'package:mokpos/app/view/onboarding_screens/custom_button.dart';
-import 'package:mokpos/app/view/owner_screens/dashboard_screen.dart';
-import 'package:mokpos/app/view_model/auth/login/login_view_model.dart';
-import 'package:mokpos/app/view_model/auth_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:mokpos/widgets/mock_dialog.dart';
 
 import '../../../base/constant.dart';
 import '../../../base/my_colors.dart';
@@ -50,17 +48,16 @@ class _LoginAsOwnerScreenState extends State<LoginAsOwnerScreen> {
           ),
         ),
       ),
-      body: Consumer<LoginViewModel>(
-        builder: (context, loginProvider, _) {
-          return Padding(
+      body:
+           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  buildForm(loginProvider, context),
-                  SizedBox(height: 20),
-                  Align(
+                  const SizedBox(height: 20),
+                  buildForm(context),
+                  const SizedBox(height: 20),
+                  const Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
                       "Send OTP:",
@@ -70,30 +67,48 @@ class _LoginAsOwnerScreenState extends State<LoginAsOwnerScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   CustomSmallButton(
                     isSelected: otpMethod == "Email",
                     label: "Email",
                     icon: Icons.mail_outlined,
                     onTap: () => changeOtpMethod("Email"),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   CustomSmallButton(
                     isSelected: otpMethod == "SMS",
                     label: "SMS",
                     icon: Icons.message,
                     onTap: () => changeOtpMethod("SMS"),
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   // Spacer(),
                   CustomButton(
                     label: "Login",
                     onTap: () {
-                      loginProvider.login(context, "Owner");
+                      // loginProvider.login(context, "Owner");
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return MockDialog(
+                              title: "Heyyo!",
+                              content: "Where Do you wanna Go?",
+                              leftButtonText: "Cashier Main Screen",
+                              rightButtonText: "Main Screen",
+                              onLeftButtonTap: () => Constant.navigatePush(
+                                context,
+                                CashierMainScreen(),
+                              ),
+                              onRightButtonTap: () => Constant.navigatePush(
+                                context,
+                                MainScreen(),
+                              ),
+                            );
+                          });
                     },
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "Forgot Password",
                     style: TextStyle(
                       decoration: TextDecoration.underline,
@@ -102,19 +117,17 @@ class _LoginAsOwnerScreenState extends State<LoginAsOwnerScreen> {
                     ),
                   ),
                   // Spacer(),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),
-          );
-        },
-      ),
+          )
+
     );
   }
 
-  Widget buildForm(LoginViewModel viewModel, BuildContext context) {
+  Widget buildForm( BuildContext context) {
     return Form(
-      key: viewModel.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
@@ -122,16 +135,14 @@ class _LoginAsOwnerScreenState extends State<LoginAsOwnerScreen> {
             controller: emailController,
             onChanged: (String val) {
               print(val);
-              viewModel.setEmail(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PasswordField(
             controller: passController,
             title: "Password",
             hintText: "At least 8 characters",
             onChanged: (String val) {
-              viewModel.setPassword(val);
             },
           ),
         ],

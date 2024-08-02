@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mokpos/app/view/budget_model.dart';
-import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/back_button_black.dart';
-import '../view_model/budget_view_model.dart';
 
 class BudgetDetailScreen extends StatelessWidget {
   final int budgetIndex;
+
   const BudgetDetailScreen({
     super.key,
     required this.budgetIndex,
@@ -14,25 +14,34 @@ class BudgetDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<BudgetViewModel>(
-      builder: (context, budgetViewModel, _) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Budget ${budgetIndex + 1}"),
+    List<BudgetModel> models = [
+      BudgetModel(
+        budgetItems: [
+          BudgetItems(
+            price: 200,
+            name: "Med",
+            id: const Uuid().v4(),
+            quantity: 2,
           ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  buildBudgetItems(
-                      context, budgetViewModel.budgetsList[budgetIndex]),
-                ],
-              ),
-            ),
+        ],
+        id: const Uuid().v4(),
+      ),
+    ];
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Budget ${budgetIndex + 1}"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              buildBudgetItems(
+                  context, models[budgetIndex]),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
@@ -42,7 +51,7 @@ class BudgetDetailScreen extends StatelessWidget {
         Builder(
           builder: (context) {
             if (false) {
-              return Text("no items yet");
+              return const Text("no items yet");
             } else {
               return Column(
                 children: [
@@ -50,7 +59,7 @@ class BudgetDetailScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: budget.budgetItems!.length,
                     separatorBuilder: (context, index) {
-                      return Divider(height: 25);
+                      return const Divider(height: 25);
                     },
                     itemBuilder: (context, index) {
                       BudgetItems item = budget.budgetItems![index];
@@ -58,7 +67,7 @@ class BudgetDetailScreen extends StatelessWidget {
                       return Row(
                         children: <Widget>[
                           Expanded(
-                            child: Container(
+                            child: SizedBox(
                               height: 30,
                               child: Text("${item.name}"),
                             ),
@@ -71,7 +80,7 @@ class BudgetDetailScreen extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       "${item.quantity}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -86,11 +95,11 @@ class BudgetDetailScreen extends StatelessWidget {
                       );
                     },
                   ),
-                  Divider(height: 25),
+                  const Divider(height: 25),
                   Row(
                     children: <Widget>[
-                      Expanded(
-                        child: Container(
+                      const Expanded(
+                        child: SizedBox(
                           height: 30,
                           child: Text(
                             "Total",
@@ -115,7 +124,7 @@ class BudgetDetailScreen extends StatelessWidget {
 
                                 return Text(
                                   "CFA $total",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 );

@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view/cashier_screens/add_customer_screen.dart';
-import 'package:mokpos/app/view/cashier_screens/register_client_nfc_screen.dart';
-import 'package:mokpos/app/view/nfc_scan_screen_register_customer.dart';
-import 'package:mokpos/app/view_model/customer/customer_view_model.dart';
-import 'package:mokpos/app/view_model/user/user_view_model.dart';
-import 'package:mokpos/base/constant.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
 import 'package:mokpos/widgets/email_text_field.dart';
 import 'package:mokpos/widgets/number_text_field.dart';
 import 'package:mokpos/widgets/password_field.dart';
-import 'package:mokpos/widgets/phone_text_field.dart';
-import 'package:provider/provider.dart';
 
-import '../../../widgets/my_drawer.dart';
 import '../../../widgets/name_text_field.dart';
-import '../onboarding_screens/custom_button.dart';
-import '../owner_screens/history_modal_sheet.dart';
 
 class AddNewEmployeeScreen extends StatefulWidget {
   const AddNewEmployeeScreen({super.key});
@@ -46,11 +35,10 @@ class _AddNewEmployeeScreenState extends State<AddNewEmployeeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserViewModel>(
-      builder: (context, userViewModel, _) {
+
         return Scaffold(
           appBar: AppBar(
-            title: Text("Enregistrer un Agent"),
+            title: const Text("Enregistrer un Agent"),
           ),
           // drawer: MyDrawer(),
           body: Padding(
@@ -59,34 +47,34 @@ class _AddNewEmployeeScreenState extends State<AddNewEmployeeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20),
-                  buildForm(context, userViewModel),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  buildForm(context),
+                  const SizedBox(height: 20),
+                  const Text(
                     "Select Type of Employee",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Row(
+                  const SizedBox(height: 20),
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomSmallButton(
-                        isSelected: userViewModel.newEmpType == "cashier",
-                        label: "Point de vente",
-                        fontSize: 12,
-                        icon: Icons.money,
-                        onTap: () => userViewModel.setEmpType("cashier"),
-                      ),
-                      CustomSmallButton(
-                        isSelected: userViewModel.newEmpType == "topup",
-                        label: "Point de Recharge",
-                        fontSize: 12,
-                        icon: Icons.wifi,
-                        onTap: () => userViewModel.setEmpType("topup"),
-                      ),
+                      // CustomSmallButton(
+                      //   isSelected: userViewModel.newEmpType == "cashier",
+                      //   label: "Point de vente",
+                      //   fontSize: 12,
+                      //   icon: Icons.money,
+                      //   onTap: () => userViewModel.setEmpType("cashier"),
+                      // ),
+                      // CustomSmallButton(
+                      //   isSelected: userViewModel.newEmpType == "topup",
+                      //   label: "Point de Recharge",
+                      //   fontSize: 12,
+                      //   icon: Icons.wifi,
+                      //   onTap: () => userViewModel.setEmpType("topup"),
+                      // ),
                     ],
                   ),
                 ],
@@ -96,33 +84,17 @@ class _AddNewEmployeeScreenState extends State<AddNewEmployeeScreen> {
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: MyTextButton(
-            margin: EdgeInsets.symmetric(horizontal: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
             label: "ENREGISTRER",
             backgroundColor: checkFields() ? Colors.green : Colors.grey[600],
-            onTap: () {
-              if (userViewModel.email.isNotEmpty &&
-                  userViewModel.name.isNotEmpty &&
-                  userViewModel.phone.isNotEmpty &&
-                  userViewModel.pass.isNotEmpty &&
-                  (userViewModel.pass.length >= 8) &&
-                  checkFields()) {
-                print("Add Employee");
-                userViewModel.registerNewEmployee(context);
-                // Constant.navigatePush(
-                //     context, RegisterClientNfcScreen.withDependency());
-              } else {
-                print("Invalid Form");
-              }
-            },
           ),
         );
-      },
-    );
+
   }
 
-  Widget buildForm(BuildContext context, UserViewModel viewModel) {
+  Widget buildForm(BuildContext context) {
     return Form(
-      key: viewModel.formKey,
+
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
@@ -131,30 +103,26 @@ class _AddNewEmployeeScreenState extends State<AddNewEmployeeScreen> {
             hintText: "Martin MBAPPE",
             controller: nameController,
             onChanged: (String val) {
-              viewModel.setName(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           EmailTextField(
             controller: emailController,
             onChanged: (String val) {
-              viewModel.setEmail(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           NumberTextField(
             title: "Tel",
             hintText: "12378900",
             controller: phoneController,
             onChanged: (String val) {
-              viewModel.setPhone(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PasswordField(
             controller: passController,
             onChanged: (String val) {
-              viewModel.setPass(val);
             },
           ),
         ],

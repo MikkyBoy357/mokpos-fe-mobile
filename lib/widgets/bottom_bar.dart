@@ -18,7 +18,7 @@ class BottomBar extends StatelessWidget {
       backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           label: "Home",
           icon: Icon(CupertinoIcons.square_grid_2x2),
@@ -60,7 +60,7 @@ class CashierBottomBar extends StatelessWidget {
       onTap: onTap,
       backgroundColor: Colors.white,
       selectedItemColor: Colors.black,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           label: "Home",
           icon: Icon(Icons.home),

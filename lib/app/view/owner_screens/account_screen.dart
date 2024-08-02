@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view_model/auth/login/login_view_model.dart';
-import 'package:provider/provider.dart';
+
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LoginViewModel>(
-      builder: (context, loginViewModel, _) {
+
         return Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Account",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -24,8 +22,8 @@ class AccountScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-                Row(
+                const SizedBox(height: 20),
+                const Row(
                   children: [
                     CircleAvatar(
                       radius: 40,
@@ -48,7 +46,7 @@ class AccountScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 // ListView.builder(
                 //   physics: NeverScrollableScrollPhysics(),
                 //   shrinkWrap: true,
@@ -77,7 +75,7 @@ class AccountScreen extends StatelessWidget {
                 //     );
                 //   },
                 // ),
-                Text(
+                const Text(
                   "MokPOS v1.0.0",
                   style: TextStyle(
                     fontSize: 18,
@@ -87,17 +85,16 @@ class AccountScreen extends StatelessWidget {
                 // Spacer(),
                 GestureDetector(
                   onTap: () {
-                    loginViewModel.logout(context);
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.red,
                       ),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Logout",
                         style: TextStyle(
@@ -108,12 +105,11 @@ class AccountScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
               ],
             ),
           ),
         );
-      },
-    );
+
   }
 }

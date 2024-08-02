@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mokpos/app/view/cashier_screens/cashier_main_screen.dart';
 import 'package:mokpos/app/view/onboarding_screens/custom_button.dart';
-import 'package:mokpos/app/view_model/auth/login/login_view_model.dart';
-import 'package:mokpos/app/view_model/auth_provider.dart';
-import 'package:mokpos/widgets/name_text_field.dart';
+import 'package:mokpos/app/view/topup_screens/topup_main_screen.dart';
+import 'package:mokpos/widgets/mock_dialog.dart';
 import 'package:mokpos/widgets/number_text_field.dart';
-import 'package:provider/provider.dart';
 
 import '../../../base/constant.dart';
 import '../../../base/my_colors.dart';
 import '../../../widgets/back_button_black.dart';
-import '../../../widgets/email_text_field.dart';
 import '../../../widgets/password_field.dart';
 
 class LoginAsEmployeeScreen extends StatefulWidget {
@@ -51,47 +48,62 @@ class _LoginAsEmployeeScreenState extends State<LoginAsEmployeeScreen> {
           ),
         ),
       ),
-      body: Consumer<LoginViewModel>(
-        builder: (context, loginProvider, _) {
-          return Padding(
+      body:
+           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  buildForm(loginProvider, context),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 20),
+                  buildForm(context),
+                  const SizedBox(height: 40),
                   // Spacer(),
                   CustomButton(
                     label: "Login",
                     onTap: () {
-                      loginProvider.loginAsCashier(context);
+                      // loginProvider.loginAsCashier(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) => MockDialog(
+                          title: "Heyyo",
+                          content: "Where do you wanna go?",
+                          leftButtonText: "Cashier Main Screen",
+                          rightButtonText: "Top Up Main Screen",
+                          onLeftButtonTap: () => Constant.navigatePush(
+                            context,
+                            CashierMainScreen(),
+                          ),
+                          onRightButtonTap: () => Constant.navigatePush(
+                            context,
+                            TopupMainScreen(),
+                          ),
+                        ),
+                      );
                     },
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: Color(0XFF1A72DD).withOpacity(0.1)),
-                    child: Text(
+                        color: const Color(0XFF1A72DD).withOpacity(0.1)),
+                    child: const Text(
                       "Use the cashier code that can be created by the Owner in Manage Store -> Cashier Code",
                     ),
                   ),
                   // Spacer(),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+
     );
   }
 
-  Widget buildForm(LoginViewModel viewModel, BuildContext context) {
+  Widget buildForm( BuildContext context) {
     return Form(
-      key: viewModel.formKey,
+
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
@@ -100,16 +112,14 @@ class _LoginAsEmployeeScreenState extends State<LoginAsEmployeeScreen> {
             hintText: "0000",
             controller: codeController,
             onChanged: (String val) {
-              viewModel.setCode(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PasswordField(
             controller: passController,
             title: "Password",
             hintText: "At least 8 characters",
             onChanged: (String val) {
-              viewModel.setPassword(val);
             },
           ),
         ],

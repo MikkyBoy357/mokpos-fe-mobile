@@ -22,12 +22,12 @@ class OrderItemModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['imageUrl'] = this.imageUrl;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['count'] = count;
+    data['id'] = id;
+    data['name'] = name;
+    data['price'] = price;
+    data['imageUrl'] = imageUrl;
     return data;
   }
 }

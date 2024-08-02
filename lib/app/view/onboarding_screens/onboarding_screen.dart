@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mokpos/app/view/auth_screens/choose_login.dart';
-import 'package:mokpos/app/view/auth_screens/login_as_owner_screen.dart';
 import 'package:mokpos/app/view/auth_screens/sign_up_screen.dart';
 import 'package:mokpos/app/view/onboarding_screens/custom_button.dart';
 import 'package:mokpos/base/constant.dart';
-import 'package:mokpos/widgets/back_button_black.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -27,8 +25,8 @@ class OnboardingScreen extends StatelessWidget {
               height: 30,
               width: 50,
             ),
-            SizedBox(width: 10),
-            Text(
+            const SizedBox(width: 10),
+            const Text(
               "POS.",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -41,47 +39,47 @@ class OnboardingScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
               width: size.width,
               height: size.height / 3,
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Center(
                 child: Image.asset("${Constant.assetImagePath}desktop.png"),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            Text(
+            const Text(
               "Easy Payment for your store.",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             // Spacer(),
             CustomButton(
               label: "Créer un compte",
               onTap: () {
-                Constant.navigatePush(context, SignUpScreen());
+                Constant.navigatePush(context, const SignUpScreen());
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             CustomOutlineButton(
               label: "Se connecter",
               onTap: () {
-                Constant.navigatePush(context, ChooseLoginScreen());
+                Constant.navigatePush(context, const ChooseLoginScreen());
               },
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
           ],
         ),
       ),

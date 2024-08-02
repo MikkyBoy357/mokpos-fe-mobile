@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class ProductModel {
   String? id;
@@ -18,12 +17,12 @@ class ProductModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['category'] = this.category;
-    data['image'] = this.image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['price'] = price;
+    data['category'] = category;
+    data['image'] = image;
     return data;
   }
 }

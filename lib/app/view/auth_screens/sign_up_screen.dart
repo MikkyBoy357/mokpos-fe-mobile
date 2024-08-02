@@ -1,15 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mokpos/app/view/onboarding_screens/custom_button.dart';
-import 'package:mokpos/app/view_model/auth_provider.dart';
 import 'package:mokpos/base/constant.dart';
 import 'package:mokpos/base/my_colors.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
 import 'package:mokpos/widgets/email_text_field.dart';
-import 'package:provider/provider.dart';
 
 import '../../../widgets/password_field.dart';
 import '../../../widgets/phone_text_field.dart';
-import '../../view_model/auth/sign_up/register_view_model.dart';
+import '../main_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -25,8 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RegisterViewModel>(
-      builder: (context, registerViewModel, _) {
+
         return Scaffold(
           appBar: AppBar(
             leading: Column(
@@ -50,49 +48,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 20),
-                  buildForm(registerViewModel, context),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 20),
+                  buildForm(context),
+                  const SizedBox(height: 40),
                   CustomButton(
                     label: "Sign up",
-                    onTap: () => registerViewModel.register(context),
+                    onTap: () => Navigator.of(context).pushReplacement(
+                      CupertinoPageRoute(
+                        builder: (_) => MainScreen(),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
         );
-      },
-    );
+
   }
 
-  Widget buildForm(RegisterViewModel viewModel, BuildContext context) {
+  Widget buildForm( BuildContext context) {
     return Form(
-      key: viewModel.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
           EmailTextField(
             controller: emailController,
             onChanged: (String val) {
-              viewModel.setEmail(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PhoneTextField(
             controller: phoneController,
             onChanged: (String val) {
-              viewModel.setPhone(val);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           PasswordField(
             controller: passController,
             title: "Password",
             hintText: "at least 8 characters",
             onChanged: (String val) {
-              viewModel.setPassword(val);
-              viewModel.setConfirmPass(val);
+
             },
           ),
         ],

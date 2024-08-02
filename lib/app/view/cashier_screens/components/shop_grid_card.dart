@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/model/shop_item_model.dart';
 import 'package:mokpos/app/view/product_model.dart';
 
 import '../../../../widgets/back_button_black.dart';
@@ -57,7 +56,7 @@ class ShopGridCard extends StatelessWidget {
                     children: [
                       Text(
                         "${shopItem.name}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -82,7 +81,7 @@ class ShopGridCard extends StatelessWidget {
                 children: [
                   Text(
                     "CFA ${shopItem.price}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.green,
                       fontWeight: FontWeight.bold,
                     ),
@@ -91,7 +90,7 @@ class ShopGridCard extends StatelessWidget {
                     visible: showAdd,
                     child: BlackIconButton(
                       onTap: onAdd,
-                      child: Icon(
+                      child: const Icon(
                         Icons.add,
                         color: Colors.white,
                       ),

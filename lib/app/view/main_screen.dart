@@ -1,8 +1,5 @@
-import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view/cashier_screens/cashier_home_screen.dart';
 import 'package:mokpos/app/view/cashier_screens/customer_list_screen.dart';
 import 'package:mokpos/app/view/owner_screens/dashboard_screen.dart';
 import 'package:mokpos/app/view/products_screen.dart';
@@ -13,6 +10,8 @@ import 'owner_screens/employee_list_screen.dart';
 // ignore: must_be_immutable
 class MainScreen extends StatefulWidget {
   var cartItemId;
+
+  MainScreen({super.key});
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -20,7 +19,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedItem = 0;
   late String uid;
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   @override
   void initState() {
     // TODO: implement initState
@@ -31,20 +30,20 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (index) {
           setState(() {
             _selectedItem = index;
             print(_selectedItem);
           });
         },
-        children: [
+        controller: _pageController,
+        children: const [
           DashboardScreen(),
           EmployeeListScreen(),
           CustomerListScreen(),
           ProductsScreen(),
         ],
-        controller: _pageController,
       ),
       bottomNavigationBar: BottomBar(
         currentIndex: _selectedItem,
@@ -53,7 +52,7 @@ class _MainScreenState extends State<MainScreen> {
             () {
               _selectedItem = index;
               _pageController.animateToPage(_selectedItem,
-                  duration: Duration(milliseconds: 200), curve: Curves.linear);
+                  duration: const Duration(milliseconds: 200), curve: Curves.linear);
             },
           );
         },

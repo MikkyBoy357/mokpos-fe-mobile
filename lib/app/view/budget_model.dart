@@ -9,16 +9,16 @@ class BudgetModel {
     if (json['budgetItems'] != null) {
       budgetItems = <BudgetItems>[];
       json['budgetItems'].forEach((v) {
-        budgetItems!.add(new BudgetItems.fromJson(v));
+        budgetItems!.add(BudgetItems.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    if (this.budgetItems != null) {
-      data['budgetItems'] = this.budgetItems!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    if (budgetItems != null) {
+      data['budgetItems'] = budgetItems!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -40,11 +40,11 @@ class BudgetItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    data['quantity'] = this.quantity;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['price'] = price;
+    data['quantity'] = quantity;
     return data;
   }
 }

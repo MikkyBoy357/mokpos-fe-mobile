@@ -1,38 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:mokpos/app/view_model/customer/customer_view_model.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
-import 'package:provider/provider.dart';
 
 class CustomerDetailScreen extends StatelessWidget {
   const CustomerDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CustomerViewModel>(
-      builder: (context, customerViewModel, _) {
+
         return Scaffold(
           appBar: AppBar(
-            title: Text("Customer Details"),
+            title: const Text("Customer Details"),
           ),
-          body: Scaffold(
+          body: const Scaffold(
             body: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 20),
                     InfoRow(
-                      title: "${customerViewModel.selectedCustomer?.name}",
+                      title: "Med",
                     ),
                     SizedBox(height: 20),
                     InfoRow(
-                      title: "${customerViewModel.selectedCustomer?.email}",
+                      title: "med@gmail.com",
                     ),
                     SizedBox(height: 20),
                     InfoRow(
                       fontSize: 12,
-                      title: "${customerViewModel.selectedCustomer?.id}",
+                      title: "28828",
                     ),
                     Divider(height: 15),
                     SizedBox(height: 40),
@@ -47,7 +44,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 30,
                             child: Text("Wagyu Black Paper"),
                           ),
@@ -77,7 +74,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 30,
                             child: Text("Wagyu Black Paper"),
                           ),
@@ -107,7 +104,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 30,
                             child: Text("Wagyu Sate"),
                           ),
@@ -137,7 +134,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 30,
                             child: Text("Diskon"),
                           ),
@@ -157,7 +154,7 @@ class CustomerDetailScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Expanded(
-                          child: Container(
+                          child: SizedBox(
                             height: 30,
                             child: Text(
                               "Total",
@@ -189,8 +186,7 @@ class CustomerDetailScreen extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
+
   }
 }
 
@@ -215,7 +211,7 @@ class InfoRow extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        Icon(Icons.chevron_right),
+        const Icon(Icons.chevron_right),
       ],
     );
   }

@@ -33,16 +33,16 @@ class EmployeeModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['employeeType'] = this.employeeType;
-    data['employeeCode'] = this.employeeCode;
-    data['employeeId'] = this.employeeId;
-    data['ownerId'] = this.ownerId;
-    data['password'] = this.password;
-    data['walletBalance'] = this.walletBalance;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['employeeType'] = employeeType;
+    data['employeeCode'] = employeeCode;
+    data['employeeId'] = employeeId;
+    data['ownerId'] = ownerId;
+    data['password'] = password;
+    data['walletBalance'] = walletBalance;
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
     return data;
   }
 }

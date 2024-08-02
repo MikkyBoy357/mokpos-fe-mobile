@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,6 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    User currentUser = FirebaseAuth.instance.currentUser!;
 
     return Drawer(
       backgroundColor: Colors.black,
@@ -37,8 +35,8 @@ class MyDrawer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text(
+                      const SizedBox(width: 10),
+                      const Text(
                         "MokPOS.",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -47,8 +45,8 @@ class MyDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "MyStoreName",
                     style: TextStyle(
                       fontSize: 22,
@@ -56,23 +54,23 @@ class MyDrawer extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Text(
-                    "${currentUser.email}",
+                  const Text(
+                    "rikky@gmail.com",
                     style: TextStyle(
                       fontSize: 22,
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                     height: 50,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     decoration: BoxDecoration(
                       color: Colors.grey[100]!.withOpacity(0.1),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -88,14 +86,14 @@ class MyDrawer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Divider(thickness: 0.1),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 0.1),
+                  const SizedBox(height: 10),
                   ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: drawerItems.length,
-                    separatorBuilder: (context, index) => SizedBox(height: 30),
+                    separatorBuilder: (context, index) => const SizedBox(height: 30),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -111,10 +109,10 @@ class MyDrawer extends StatelessWidget {
                               height: 24,
                               width: 24,
                             ),
-                            SizedBox(width: 25),
+                            const SizedBox(width: 25),
                             Text(
                               drawerItems[index].label,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -136,8 +134,8 @@ class MyDrawer extends StatelessWidget {
                       color: Colors.green[100]!.withOpacity(0.1),
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Column(
+                  const SizedBox(width: 10),
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(

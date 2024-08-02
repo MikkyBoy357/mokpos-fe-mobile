@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../base/constant.dart';
@@ -36,7 +35,7 @@ class _PasswordFieldState extends State<PasswordField> {
       children: [
         Text(
           widget.title,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
         Stack(
           children: [

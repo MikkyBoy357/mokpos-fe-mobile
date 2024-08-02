@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mokpos/app/view/auth_screens/login_as_employee_screen.dart';
 import 'package:mokpos/app/view/auth_screens/login_as_owner_screen.dart';
-import 'package:mokpos/app/view/auth_screens/sign_up_screen.dart';
 import 'package:mokpos/app/view/onboarding_screens/custom_button.dart';
 import 'package:mokpos/base/constant.dart';
 import 'package:mokpos/widgets/back_button_black.dart';
@@ -40,8 +39,8 @@ class ChooseLoginScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(height: 10),
-            Column(
+            const SizedBox(height: 10),
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -62,13 +61,13 @@ class ChooseLoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
               width: size.width,
               height: size.height / 4,
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Center(
                 child: Image.asset("${Constant.assetImagePath}welcome.png"),
               ),
@@ -76,18 +75,18 @@ class ChooseLoginScreen extends StatelessWidget {
             // Spacer(),
             CustomButton(
               label: "Connexion Admin",
-              prefixWidget: Icon(
+              prefixWidget: const Icon(
                 CupertinoIcons.profile_circled,
                 color: Colors.white,
                 size: 30,
               ),
               onTap: () {
-                Constant.navigatePush(context, LoginAsOwnerScreen());
+                Constant.navigatePush(context, const LoginAsOwnerScreen());
               },
             ),
-            SizedBox(height: 10),
-            Text("or"),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            const Text("or"),
+            const SizedBox(height: 10),
             CustomButton(
               label: "Connexion Agent",
               prefixWidget: SvgPicture.asset(
@@ -96,17 +95,17 @@ class ChooseLoginScreen extends StatelessWidget {
                 width: 30,
               ),
               onTap: () {
-                Constant.navigatePush(context, LoginAsEmployeeScreen());
+                Constant.navigatePush(context, const LoginAsEmployeeScreen());
               },
             ),
-            SizedBox(height: 10),
-            Row(
+            const SizedBox(height: 10),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don't have an account?"),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             // Spacer()
           ],
         ),
